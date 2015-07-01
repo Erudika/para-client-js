@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "aws4": "^1.0.4",
     "lodash": "^3.9.3",
-    "lru-cache": "^2.6.5",
     "rsvp": "^3.0.18",
     "superagent": "^1.2.0"
   }
