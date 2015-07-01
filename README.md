@@ -3,7 +3,7 @@
 
 # JavaScript Client for Para
 
-[![NPM version][npm-image]][npm-url]
+[![npm version](https://badge.fury.io/js/para-client-js.svg)](http://badge.fury.io/js/para-client-js)
 
 ## What is this?
 
@@ -62,6 +62,3 @@ For more information see [CONTRIBUTING.md](https://github.com/Erudika/para/blob/
 
 ## License
 [Apache 2.0](LICENSE)
-
-[npm-image]: https://badge.fury.io/js/para-client-js.svg
-[npm-url]: https://npmjs.org/package/para-client-js
