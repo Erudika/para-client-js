@@ -40,7 +40,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "debug": "^2.2.0",
     "lodash": "^3.9.3",
     "lru-cache": "^2.6.5",
     "rsvp": "^3.0.18",
