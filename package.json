@@ -1,0 +1,49 @@
+{
+  "name": "para-client-js",
+  "version": "1.15.0",
+  "description": "JavaScript Client for Para",
+  "homepage": "http://paraio.org",
+  "repository": "erudika/para-client-js",
+  "author": {
+    "name": "Alex Bogdanovski",
+    "email": "alex@erudika.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Erudika/para-client-js/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "para",
+    "client",
+    "back-end",
+    "server-side",
+    "server",
+    "backend",
+    "api",
+    "rest",
+    "json"
+  ],
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-eslint": "^0.8.0",
+    "gulp-jscs": "^1.1.0",
+    "gulp-jshint": "^1.5.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^2.2.5"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "lodash": "^3.9.3",
+    "lru-cache": "^2.6.5",
+    "rsvp": "^3.0.18",
+    "superagent": "^1.2.0"
+  }
+}
