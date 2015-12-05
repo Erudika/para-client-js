@@ -42,7 +42,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "6P8uwMgxnUQplN0MU0Uc0KEUgL1iy2RACZd3SLjZhGH/T9q7JxoxfA==");
+		pc = new ParaClient("app:para", "WIUJt/CS1+Qdz5bsJ+Crh5hxqvJZOolLWodiBGjE3nCDR0w/LupVmQ==");
 		pc.endpoint = "http://localhost:8080";
 
 		pc.me().then(function () {}, function (err) {
@@ -245,7 +245,7 @@ describe('ParaClient tests', function () {
 		});
 	});
 
-	it('should pass batch list() tests', function (done) {
+	it('should pass batch list tests', function (done) {
 		var cats = [];
 		for (var i = 0; i < 3; i++) {
 			var s = new ParaObject(catsType + i);
@@ -290,7 +290,7 @@ describe('ParaClient tests', function () {
 		});
 	});
 
-	it('should pass the search() tests', function (done) {
+	it('should pass the search tests', function (done) {
 		var p;
 		var i0;
 		var i1;
@@ -570,28 +570,40 @@ describe('ParaClient tests', function () {
 	});
 
 	it('should pass misc tests', function (done) {
-		var kittenType = "kitten";
 		var types;
-		var ct;
 		pc.types().then(function (res) {
+			assert(res !== null);
 			types = res;
 			assert(!_.isEmpty(types));
 			assert(types["users"]);
-			return pc.validationConstraints();
+			return pc.me();
 		}).then(function (res) {
+			assert(res !== null);
+			assert.strictEqual("app:para", res.getId());
+			done();
+		}).catch(function (err) {
+			done(err);
+		});
+	});
+
+	it('should pass validations tests', function (done) {
+		var kittenType = "kitten";
+		var ct;
+
+		pc.validationConstraints().then(function (res) {
 			assert(!_.isEmpty(res));
 			assert(res["app"]);
 			assert(res["user"]);
 			return pc.validationConstraints("app");
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
-			assert(res["App"]);
+			assert(res["app"]);
 			assert.strictEqual(1, _.size(res));
 			return pc.addValidationConstraint(kittenType, "paws", Constraint.required());
 		}).then(function (res) {
 			return pc.validationConstraints(kittenType);
 		}).then(function (res) {
-			var t = kittenType[0].toUpperCase() + kittenType.slice(1);
+			var t = kittenType[0] + kittenType.slice(1);
 			assert(res[t]["paws"]);
 			ct = new ParaObject("felix");
 			ct.setType(kittenType);
@@ -610,11 +622,145 @@ describe('ParaClient tests', function () {
 		}).then(function (res) {
 			return pc.validationConstraints(kittenType);
 		}).then(function (res) {
-			var t = kittenType[0].toUpperCase() + kittenType.slice(1);
+			var t = kittenType[0] + kittenType.slice(1);
 			assert(!_.isEmpty(res[t]));
 			done();
 		}).catch(function (err) {
 			done(err);
+		});
+	});
+
+	it('should pass permissions tests', function (done) {
+		// Permissions
+		pc.resourcePermissions().then(function (res) {
+			assert(res !== null);
+			return pc.grantResourcePermission(null, dogsType, []);
+		}).then(function (res) {
+			assert(res && _.isEmpty(res));
+			return pc.grantResourcePermission(" ", "", []);
+		}).then(function (res) {
+			assert(res && _.isEmpty(res));
+			return pc.grantResourcePermission(u1.getId(), dogsType, ["GET"]);
+		}).then(function (res) {
+			return pc.resourcePermissions(u1.getId());
+		}).then(function (res) {
+			var permits = res;
+			assert(permits[u1.getId()] !== null);
+			assert(permits[u1.getId()][dogsType] !== null);
+			return pc.isAllowedTo(u1.getId(), dogsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u1.getId(), dogsType, "POST");
+		}).then(function (res) {
+			assert(!res);
+			return pc.resourcePermissions();
+		}).then(function (res) {
+			var permits = res;
+			assert(permits[u1.getId()] !== null);
+			assert(permits[u1.getId()][dogsType] !== null);
+			return pc.revokeResourcePermission(u1.getId(), dogsType);
+		}).then(function (res) {
+			return pc.resourcePermissions(u1.getId());
+		}).then(function (res) {
+			var permits = res;
+			assert(!permits[u1.getId()][dogsType]);
+			return pc.isAllowedTo(u1.getId(), dogsType, "GET");
+		}).then(function (res) {
+			assert(!res);
+			return pc.isAllowedTo(u1.getId(), dogsType, "POST");
+		}).then(function (res) {
+			assert(!res);
+			return pc.grantResourcePermission(u2.getId(), "*", ["POST", "PUT", "PATCH", "DELETE"]);
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u2.getId(), dogsType, "PUT");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u2.getId(), dogsType, "PATCH");
+		}).then(function (res) {
+			assert(res);
+			return pc.revokeAllResourcePermissions(u2.getId());
+		}).then(function (res) {
+			return pc.resourcePermissions();
+		}).then(function (res) {
+			var permits = res;
+			assert(permits[u2.getId()] && _.isEmpty(permits[u2.getId()]));
+			return pc.isAllowedTo(u2.getId(), dogsType, "PUT");
+		}).then(function (res) {
+			assert(!res);
+			return pc.grantResourcePermission(u1.getId(), dogsType, ["POST", "PUT", "PATCH", "DELETE"]);
+		}).then(function (res) {
+			return pc.grantResourcePermission("*", catsType, ["POST", "PUT", "PATCH", "DELETE"]);
+		}).then(function (res) {
+			return pc.grantResourcePermission("*", "*", ["GET"]);
+		}).then(function (res) {
+			// user-specific permissions are in effect
+			return pc.isAllowedTo(u1.getId(), dogsType, "PUT");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u1.getId(), dogsType, "GET");
+		}).then(function (res) {
+			assert(!res);
+			return pc.isAllowedTo(u1.getId(), catsType, "PUT");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u1.getId(), catsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.revokeAllResourcePermissions(u1.getId());
+		}).then(function (res) {
+			// user-specific permissions not found so check wildcard
+			return pc.isAllowedTo(u1.getId(), dogsType, "PUT");
+		}).then(function (res) {
+			assert(!res);
+			return pc.isAllowedTo(u1.getId(), dogsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u1.getId(), catsType, "PUT");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u1.getId(), catsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.revokeResourcePermission("*", catsType);
+		}).then(function (res) {
+			// resource-specific permissions not found so check wildcard
+			return pc.isAllowedTo(u1.getId(), dogsType, "PUT");
+		}).then(function (res) {
+			assert(!res);
+			return pc.isAllowedTo(u1.getId(), catsType, "PUT");
+		}).then(function (res) {
+			assert(!res);
+			return pc.isAllowedTo(u1.getId(), dogsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u1.getId(), catsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u2.getId(), dogsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.isAllowedTo(u2.getId(), catsType, "GET");
+		}).then(function (res) {
+			assert(res);
+			return pc.revokeAllResourcePermissions("*");
+		}).then(function (res) {
+			return pc.revokeAllResourcePermissions(u1.getId());
+		}).then(function (res) {
+			done();
+		}).catch(function (err) {
+			done(err);
+		});
+	});
+
+	it('should pass tokens tests', function (done) {
+		assert(pc.getAccessToken() === null);
+		pc.signIn("facebook", "test_token").then(function (res) {
+			assert(!res);
+			return pc.revokeAllTokens();
+		}).then(function (res) {
+			assert(!res);
+			return done();
 		});
 	});
 });
