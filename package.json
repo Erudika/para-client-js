@@ -1,9 +1,10 @@
 {
   "name": "para-client-js",
-  "version": "1.17.3",
+  "version": "1.17.4",
   "description": "JavaScript Client for Para",
   "homepage": "http://paraio.org",
   "repository": "erudika/para-client-js",
+  "main": "index.js",
   "author": {
     "name": "Alex Bogdanovski",
     "email": "alex@erudika.com"
