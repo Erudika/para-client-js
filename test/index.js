@@ -42,7 +42,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "WIUJt/CS1+Qdz5bsJ+Crh5hxqvJZOolLWodiBGjE3nCDR0w/LupVmQ==");
+		pc = new ParaClient("app:para", "ThpORpZ35uIJqT8rfOCb9t/5/doGbIUgmeGwO5jjyop85xyOXhx7Pg==");
 		pc.endpoint = "http://localhost:8080";
 
 		pc.me().then(function () {}, function (err) {
@@ -623,7 +623,7 @@ describe('ParaClient tests', function () {
 			return pc.validationConstraints(kittenType);
 		}).then(function (res) {
 			var t = kittenType[0] + kittenType.slice(1);
-			assert(!_.isEmpty(res[t]));
+			assert(!res[t]);
 			done();
 		}).catch(function (err) {
 			done(err);
@@ -684,10 +684,10 @@ describe('ParaClient tests', function () {
 			return pc.resourcePermissions();
 		}).then(function (res) {
 			var permits = res;
-			assert(permits[u2.getId()] && _.isEmpty(permits[u2.getId()]));
+			assert(!permits[u2.getId()] || _.isEmpty(permits[u2.getId()]));
 			return pc.isAllowedTo(u2.getId(), dogsType, "PUT");
 		}).then(function (res) {
-			assert(!res);
+			assert(!res[u2.getId()]);
 			return pc.grantResourcePermission(u1.getId(), dogsType, ["POST", "PUT", "PATCH", "DELETE"]);
 		}).then(function (res) {
 			return pc.grantResourcePermission("*", catsType, ["POST", "PUT", "PATCH", "DELETE"]);
