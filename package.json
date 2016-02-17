@@ -1,6 +1,6 @@
 {
   "name": "para-client-js",
-  "version": "1.17.6",
+  "version": "1.18.0",
   "description": "JavaScript Client for Para",
   "homepage": "http://paraio.org",
   "repository": "erudika/para-client-js",
@@ -27,25 +27,21 @@
     "json"
   ],
   "devDependencies": {
-    "gulp": "^3.6.0",
-    "gulp-eslint": "^1.1.1",
-    "gulp-jscs": "^3.0.2",
-    "gulp-jshint": "^2.0.0",
+    "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
-    "gulp-plumber": "^1.0.1",
-    "jshint-stylish": "^2.1.0",
-    "mocha": "^2.3.4"
+    "gulp-plumber": "^1.1.0",
+    "mocha": "^2.4.5"
   },
   "scripts": {
     "test": "gulp"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "aws4": "^1.1.0",
-    "lodash": "^3.10.1",
-    "lru-cache": "^2.6.5",
-    "rsvp": "^3.1.0",
-    "superagent": "^1.4.0",
-    "base64-url": "^1.2.1"
+    "aws4": "1.1.0",
+    "lodash": "4.5.0",
+    "lru-cache": "4.0.0",
+    "rsvp": "3.2.1",
+    "superagent": "1.7.2",
+    "base64-url": "1.2.1"
   }
 }

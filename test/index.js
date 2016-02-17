@@ -42,7 +42,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "ThpORpZ35uIJqT8rfOCb9t/5/doGbIUgmeGwO5jjyop85xyOXhx7Pg==");
+		pc = new ParaClient("app:para", "+cSVOFfp8IZuITzNVdx4GtU1Fim0cpa/ZtbWpvEHtFSOvMSsKGXgkw==");
 		pc.endpoint = "http://localhost:8080";
 
 		pc.me().then(function () {}, function (err) {
@@ -238,7 +238,7 @@ describe('ParaClient tests', function () {
 			});
 			return pc.getApp();
 		}).then(function (app) {
-			assert(_.contains(app.datatypes, dogsType));
+			assert(app.datatypes["dogs"] === dogsType);
 			done();
 		}).catch(function (err) {
 			done(err);

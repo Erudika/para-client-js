@@ -1,8 +1,6 @@
 'use strict';
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
 var plumber = require('gulp-plumber');
 
 var handleErr = function (err) {
@@ -15,10 +13,6 @@ gulp.task('static', function () {
 		'**/*.js',
 		'!node_modules/**'
 	])
-	.pipe(jshint('.jshintrc'))
-	.pipe(jshint.reporter('jshint-stylish'))
-	.pipe(jshint.reporter('fail'))
-	.pipe(jscs())
 	.on('error', handleErr);
 });
 
