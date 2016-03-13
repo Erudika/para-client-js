@@ -26,6 +26,7 @@ var Pager = require('../lib/Pager');
 var Constraint = require('../lib/Constraint');
 
 var pc;
+var pc2;
 var catsType = "cat";
 var dogsType = "dog";
 
@@ -42,8 +43,10 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "+cSVOFfp8IZuITzNVdx4GtU1Fim0cpa/ZtbWpvEHtFSOvMSsKGXgkw==");
+		pc = new ParaClient("app:para", "J5Scw2IJN9YQPp+zs2EMAgBQ75p5A88zdGPt00hb5ZKpJoV63+zSvw==");
 		pc.endpoint = "http://localhost:8080";
+		pc2 = new ParaClient("app:para", null);
+		pc2.endpoint = "http://localhost:8080";
 
 		pc.me().then(function () {}, function (err) {
 			done(new Error("Para server must be running before testing!\n" + err.response.res.text));
@@ -637,6 +640,15 @@ describe('ParaClient tests', function () {
 			return pc.grantResourcePermission(null, dogsType, []);
 		}).then(function (res) {
 			assert(res && _.isEmpty(res));
+			return pc.grantResourcePermission("*", "utils/timestamp", ["GET"], true);
+		}).then(function (res) {
+			assert(res !== null);
+			return pc2.getTimestamp();
+		}).then(function (res) {
+			assert(res && res > 0);
+			return pc.isAllowedTo("*", "utils/timestamp", "DELETE");
+		}).then(function (res) {
+			assert(!res);
 			return pc.grantResourcePermission(" ", "", []);
 		}).then(function (res) {
 			assert(res && _.isEmpty(res));
