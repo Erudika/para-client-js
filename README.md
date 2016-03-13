@@ -14,7 +14,7 @@ by a search engine and finally, cached.
 
 This is the JavaScript client for Para.
 
-## Quick start
+### Quick start
 
 ```sh
 $ npm install --save para-client-js
