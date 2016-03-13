@@ -1,5 +1,4 @@
 ![Logo](https://s3-eu-west-1.amazonaws.com/org.paraio/para.png)
-============================
 
 # JavaScript Client for Para
 
