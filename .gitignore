@@ -29,3 +29,4 @@ dist
 *.sublime-*
 nbproject
 validation-status.json
+bundle.js

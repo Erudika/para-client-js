@@ -17,14 +17,39 @@ This is the JavaScript client for Para.
 ### Quick start
 
 ```sh
-$ npm install --save para-client-js
+$ npm install para-client-js --save
 ```
 
 ## Usage
 
+Initialize the client in your Node.js code like so:
+
 ```js
 var ParaClient = require('para-client-js');
 var pc = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
+```
+
+## Browser usage
+
+To use `para-client-js` in the browser run:
+
+```
+$ npm install
+$ npm run build
+```
+This will generate a **"bundle.js"** file which you can use inside your HTML code:
+```html
+<html>
+  <head>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <script>
+      var ParaClient = require('para-client-js');
+      var pc = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
+    </script>
+  </body>
+</html>
 ```
 
 ## Promises and callbacks
