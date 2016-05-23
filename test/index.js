@@ -43,7 +43,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "J5Scw2IJN9YQPp+zs2EMAgBQ75p5A88zdGPt00hb5ZKpJoV63+zSvw==");
+		pc = new ParaClient("app:para", "YkJRXg7sItVW+dP0M0jfsz+RxBWvAw20ge9qmAp/idJaz4VxlZQD9g==");
 		pc.endpoint = "http://localhost:8080";
 		pc2 = new ParaClient("app:para", null);
 		pc2.endpoint = "http://localhost:8080";
@@ -775,6 +775,24 @@ describe('ParaClient tests', function () {
 			return done();
 		});
 	});
+
+//	it('should pass new key tests', function (done) {
+//		pc.me().then(function (me) {
+//			assert(me && me.type === "app");
+//			return pc.newKeys();
+//		}).then(function (res) {
+//			assert(res && res.secretKey.length > 0);
+//			console.log("New secret key: ", res.secretKey);
+//			return pc.getTimestamp();
+//		}).then(function (res) {
+//			assert(res);
+//			assert(res > 0);
+//			return done();
+//		}).catch(function (err) {
+//			done(err);
+//		});
+//	});
+
 });
 
 function sleep (sec) {
