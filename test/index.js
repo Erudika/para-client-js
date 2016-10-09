@@ -765,6 +765,48 @@ describe('ParaClient tests', function () {
 		});
 	});
 
+	it('should pass app settings tests', function (done) {
+		pc.appSettings().then(function (res) {
+			assert(_.isEmpty(res));
+			return pc.addAppSetting("", null);
+		}).then(function (res) {
+			return pc.addAppSetting(" ", " ");
+		}).then(function (res) {
+			return pc.addAppSetting("prop1", 1);
+		}).then(function (res) {
+			return pc.addAppSetting("prop2", true);
+		}).then(function (res) {
+			return pc.addAppSetting("prop3", "string");
+		}).then(function (res) {
+			return pc.appSettings(" ");
+		}).then(function (res) {
+			assert(!_.isEmpty(res));
+			assert(Object.keys(res).length === 3);
+			return pc.appSettings("prop1");
+		}).then(function (res) {
+			assert(res.value === 1);
+			return pc.appSettings("prop2");
+		}).then(function (res) {
+			assert(res.value === true);
+			return pc.appSettings("prop3");
+		}).then(function (res) {
+			assert(res.value === "string");
+			return pc.removeAppSetting("prop3");
+		}).then(function (res) {
+			return pc.appSettings("prop3");
+		}).then(function (res) {
+		}).then(function (res) {
+			return pc.removeAppSetting("prop1");
+		}).then(function (res) {
+			assert(_.isEmpty(res));
+			pc.removeAppSetting("prop3").then(pc.removeAppSetting("prop2")).
+					then(pc.removeAppSetting("prop1")).then(done);
+		}).catch(function (err) {
+			pc.removeAppSetting("prop3").then(pc.removeAppSetting("prop2")).
+					then(pc.removeAppSetting("prop1")).then(done);
+		});
+	});
+
 	it('should pass tokens tests', function (done) {
 		assert(pc.getAccessToken() === null);
 		pc.signIn("facebook", "test_token").then(function (res) {
