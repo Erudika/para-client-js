@@ -73,7 +73,7 @@ pc.read("user", "1234", function (user, err) {
 
 ## Documentation
 
-### [Read the Docs](http://paraio.org/docs)
+### [Read the Docs](https://paraio.org/docs)
 
 ## Contributing
 
