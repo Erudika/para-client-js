@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Erudika. https://erudika.com
+ * Copyright 2013-2017 Erudika. https://erudika.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "4U6nCAD+JscgLEgi7Apubfnt+TLkFUsX+HfDm7J10SBcHA8YRGY+zA==");
+		pc = new ParaClient("app:para", "vzo4v5CjylXCbSPLlucM3iJ11SGUMGsgNtO7Jkfunp5S9+aG+DDuxg==");
 		pc.endpoint = "http://localhost:8080";
 		pc2 = new ParaClient("app:para", null);
 		pc2.endpoint = "http://localhost:8080";
@@ -627,8 +627,42 @@ describe('ParaClient tests', function () {
 		}).then(function (res) {
 			var t = kittenType[0] + kittenType.slice(1);
 			assert(!res[t]);
+			// votes
+			return pc.voteUp(ct, u.getId());
+		}).then(function (res) {
+			assert(res);
+			return pc.read(ct.getType(), ct.getId());
+		}).then(function (res) {
+			assert(res && res.getVotes() > 0);
+			return pc.voteUp(ct, u.getId());
+		}).then(function (res) {
+			assert(!res);
+			return pc.voteDown(ct, u.getId());
+		}).then(function (res) {
+			assert(res);
+			return pc.read(ct.getType(), ct.getId());
+		}).then(function (res) {
+			assert(res && res.getVotes() === 0);
+			return pc.voteDown(ct, u.getId());
+		}).then(function (res) {
+			assert(res);
+			return pc.voteDown(ct, u.getId());
+		}).then(function (res) {
+			assert(!res);
+			return pc.read(ct.getType(), ct.getId());
+		}).then(function (res) {
+			assert(res && res.getVotes() < 0);
+			return pc.delete(new ParaObject("vote:" + u.getId() + ":" + ct.getId(), "vote"));
+		}).then(function (res) {
+			return pc.delete(ct);
+		}).then(function (res) {
+			// server version
+			return pc.getServerVersion();
+		}).then(function (res) {
+			assert(!_.isEmpty(res));
 			done();
 		}).catch(function (err) {
+			console.error(err);
 			done(err);
 		});
 	});
