@@ -43,7 +43,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "vzo4v5CjylXCbSPLlucM3iJ11SGUMGsgNtO7Jkfunp5S9+aG+DDuxg==");
+		pc = new ParaClient("app:para", "RZJqGml2kRjtBzTUMKU2yWSX1mWnvjAuKrZxILiqhwFDUFEiUXGxDA==");
 		pc.endpoint = "http://localhost:8080";
 		pc2 = new ParaClient("app:para", null);
 		pc2.endpoint = "http://localhost:8080";
@@ -85,10 +85,10 @@ describe('ParaClient tests', function () {
 		a2.latlng = "40.69,-73.95";
 
 		s1 = new ParaObject("s1");
-		s1.setName("This is a little test sentence. Testing, one, two, three.");
+		s1.text = "This is a little test sentence. Testing, one, two, three.";
 
 		s2 = new ParaObject("s2");
-		s2.setName("We are testing this thing. This sentence is a test. One, two.");
+		s2.text = "We are testing this thing. This sentence is a test. One, two.";
 
 		pc.createAll([u, u1, u2, t, s1, s2, a1, a2]).then(function (res) {
 			done();
@@ -348,7 +348,7 @@ describe('ParaClient tests', function () {
 			return pc.findNearby(u.getType(), "*", 10, 40.60, -73.90);
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
-			return pc.findPrefix(u.getType(), "name", "ann");
+			return pc.findPrefix(u.getType(), "name", "Ann");
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
 			return pc.findQuery("", "*");
@@ -358,10 +358,10 @@ describe('ParaClient tests', function () {
 			return pc.findQuery(a1.getType(), "country:US");
 		}).then(function (res) {
 			assert.strictEqual(2, res.length);
-			return pc.findQuery(u.getType(), "ann");
+			return pc.findQuery(u.getType(), "Ann*");
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
-			return pc.findQuery(u.getType(), "Ann");
+			return pc.findQuery(u.getType(), "Ann*");
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
 			return pc.findQuery(null, "*");
@@ -379,7 +379,7 @@ describe('ParaClient tests', function () {
 			return pc.findSimilar(t.getType(), "", [], "");
 		}).then(function (res) {
 			assert(_.isEmpty(res));
-			return pc.findSimilar(s1.getType(), s1.getId(), ["name"], s1.getName());
+			return pc.findSimilar(s1.getType(), s1.getId(), ["properties.text"], s1.text);
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
 			assert.strictEqual(s2.getId(), res[0].getId());
@@ -456,7 +456,7 @@ describe('ParaClient tests', function () {
 			return pc.findWildcard(u.getType(), "", "");
 		}).then(function (res) {
 			assert(_.isEmpty(res));
-			return pc.findWildcard(u.getType(), "name", "an*");
+			return pc.findWildcard(u.getType(), "name", "An*");
 		}).then(function (res) {
 			assert(!_.isEmpty(res));
 			return pc.getCount(null);
@@ -560,7 +560,7 @@ describe('ParaClient tests', function () {
 			return pc.stripAndTrim(" %^&*( cool )		@!");
 		}).then(function (res) {
 			assert.strictEqual(res, "cool");
-			return pc.markdownToHtml("#hello **test**");
+			return pc.markdownToHtml("# hello **test**");
 		}).then(function (res) {
 			assert.strictEqual(res, "<h1>hello <strong>test</strong></h1>\n");
 			return pc.approximately(15000);
@@ -833,11 +833,9 @@ describe('ParaClient tests', function () {
 			return pc.removeAppSetting("prop1");
 		}).then(function (res) {
 			assert(_.isEmpty(res));
-			pc.removeAppSetting("prop3").then(pc.removeAppSetting("prop2")).
-					then(pc.removeAppSetting("prop1")).then(done);
+			pc.setAppSettings({}).then(done);
 		}).catch(function (err) {
-			pc.removeAppSetting("prop3").then(pc.removeAppSetting("prop2")).
-					then(pc.removeAppSetting("prop1")).then(done);
+			pc.setAppSettings({}).then(done);
 		});
 	});
 
