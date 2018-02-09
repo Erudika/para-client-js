@@ -28,11 +28,11 @@
   ],
   "devDependencies": {
     "aliasify": "^2.1.0",
-    "browserify": "^14.4.0",
+    "browserify": "^16.0.0",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^4.3.1",
-    "gulp-plumber": "^1.1.0",
-    "mocha": "^3.4.2",
+    "gulp-mocha": "^5.0.0",
+    "gulp-plumber": "^1.2.0",
+    "mocha": "^5.0.0",
     "querystring-browser": "^1.0.4"
   },
   "scripts": {
@@ -42,11 +42,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "aws4": "^1.6.0",
-    "base64-url": "^1.3.3",
-    "lodash": "^4.17.4",
+    "base64-url": "^2.1.0",
+    "lodash": "^4.17.5",
     "lru-cache": "^4.1.1",
-    "rsvp": "^4.0.1",
-    "superagent": "^3.5.2"
+    "rsvp": "^4.8.1",
+    "superagent": "^3.8.2"
   },
   "aliasify": {
     "aliases": {
