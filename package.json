@@ -5,6 +5,7 @@
   "homepage": "https://paraio.org",
   "repository": "erudika/para-client-js",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": {
     "name": "Alex Bogdanovski",
     "email": "alex@erudika.com"
@@ -42,7 +43,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "aws4": "^1.6.0",
-    "base64-url": "^2.1.0",
     "lodash": "^4.17.5",
     "lru-cache": "^4.1.1",
     "rsvp": "^4.8.1",
