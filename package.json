@@ -28,29 +28,22 @@
     "json"
   ],
   "devDependencies": {
-    "aliasify": "^2.1.0",
-    "browserify": "^16.1.1",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^5.0.0",
+    "browserify": "^16.2.2",
+    "gulp": "^4.0.0",
+    "gulp-mocha": "^6.0.0",
     "gulp-plumber": "^1.2.0",
-    "mocha": "^5.0.4",
-    "querystring-browser": "^1.0.4"
+    "mocha": "^5.2.0"
   },
   "scripts": {
     "test": "gulp",
-    "build": "./node_modules/.bin/browserify -g aliasify -o bundle.js -r ./lib/index.js:para-client-js"
+    "build": "./node_modules/.bin/browserify -o bundle.js -r ./lib/index.js:para-client-js"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "aws4": "^1.6.0",
-    "lodash": "^4.17.5",
-    "lru-cache": "^4.1.2",
-    "rsvp": "^4.8.2",
-    "superagent": "^3.8.2"
-  },
-  "aliasify": {
-    "aliases": {
-      "querystring": "querystring-browser"
-    }
+    "aws4": "^1.8.0",
+    "lodash": "^4.17.10",
+    "lru-cache": "^4.1.3",
+    "rsvp": "^4.8.3",
+    "superagent": "^3.8.3"
   }
 }
