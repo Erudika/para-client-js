@@ -93,6 +93,8 @@ declare class ParaClient {
 
     readAll(keys: any, fn: any): any;
 
+    rebuildIndex(destinationIndex: any, fn: any): any;
+
     refreshToken(fn: any): any;
 
     removeAppSetting(key: any, fn: any): any;
