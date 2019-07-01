@@ -159,8 +159,6 @@ declare namespace ParaClient {
 
         getParentid(): any;
 
-        getPlural(): any;
-
         getStored(): any;
 
         getTags(): any;

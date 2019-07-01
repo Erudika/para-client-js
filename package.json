@@ -29,10 +29,10 @@
   ],
   "devDependencies": {
     "browserify": "^16.2.3",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-mocha": "^6.0.0",
     "gulp-plumber": "^1.2.1",
-    "mocha": "^5.2.0"
+    "mocha": "^6.1.4"
   },
   "scripts": {
     "test": "gulp",
@@ -43,7 +43,7 @@
     "aws4": "^1.8.0",
     "lodash": "^4.17.11",
     "lru-cache": "^5.1.1",
-    "rsvp": "^4.8.4",
-    "superagent": "^4.1.0"
+    "rsvp": "^4.8.5",
+    "superagent": "^5.1.0"
   }
 }
