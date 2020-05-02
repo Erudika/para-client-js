@@ -43,7 +43,7 @@ describe('ParaClient tests', function () {
 	this.timeout(0);
 
 	before(function (done) {
-		pc = new ParaClient("app:para", "xC2/S0vrq41lYlFliGmKfmuuQBe1ixf2DXbgzbCq0q6TIu6W66uH3g==");
+		pc = new ParaClient("app:para", "pfojmwnhc5O+/v5izR3a/Z0RzdT1jFSNvjAoJfVgroInzCpIJ1BdrQ==");
 		pc.endpoint = "http://localhost:8080";
 		pc2 = new ParaClient("app:para", null);
 		pc2.endpoint = "http://localhost:8080";

@@ -28,15 +28,12 @@
     "json"
   ],
   "devDependencies": {
-    "browserify": "^16.5.0",
-    "gulp": "^4.0.2",
-    "gulp-mocha": "^7.0.2",
-    "gulp-plumber": "^1.2.1",
+    "browserify": "^16.5.1",
     "minimist": ">=1.2.2",
-    "mocha": "^7.1.0"
+    "mocha": "^7.1.2"
   },
   "scripts": {
-    "test": "gulp",
+    "test": "mocha",
     "build": "./node_modules/.bin/browserify -o bundle.js -r ./lib/index.js:para-client-js"
   },
   "license": "Apache-2.0",
