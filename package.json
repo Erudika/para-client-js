@@ -6,6 +6,7 @@
   "repository": "erudika/para-client-js",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "type": "module",
   "author": {
     "name": "Alex Bogdanovski",
     "email": "alex@erudika.com"
