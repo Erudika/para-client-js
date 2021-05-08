@@ -22,10 +22,10 @@ $ npm install para-client-js --save
 
 ## Usage
 
-Initialize the client in your Node.js code like so:
+Initialize the client in your code like so:
 
 ```js
-var ParaClient = require('para-client-js');
+import { ParaClient } from 'para-client-js';
 var pc = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
 ```
 If your code runs in a browser environment, you should use a **blank secret key** and then call `signIn()`:
