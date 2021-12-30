@@ -4,7 +4,7 @@
   "description": "JavaScript Client for Para",
   "homepage": "https://paraio.org",
   "repository": "erudika/para-client-js",
-  "main": "lib/index.js",
+  "exports": "lib/index.js",
   "types": "lib/index.d.ts",
   "type": "module",
   "author": {
