@@ -1,11 +1,11 @@
 {
   "name": "para-client-js",
-  "version": "1.37.7",
+  "version": "1.37.8",
   "description": "JavaScript Client for Para",
   "homepage": "https://paraio.org",
   "repository": "erudika/para-client-js",
-  "exports": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "type": "module",
   "author": {
     "name": "Alex Bogdanovski",
