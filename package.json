@@ -30,7 +30,7 @@
   ],
   "devDependencies": {
     "browserify": "^17.0.0",
-    "minimist": "^1.2.7",
+    "minimist": "^1.2.8",
     "mocha": "^10.2.0"
   },
   "scripts": {
@@ -41,8 +41,8 @@
   "dependencies": {
     "aws4": "^1.12.0",
     "lodash": "^4.17.21",
-    "lru-cache": "^7.14.1",
+    "lru-cache": "^10.0.0",
     "rsvp": "^4.8.5",
-    "superagent": "^8.0.6"
+    "superagent": "^8.0.9"
   }
 }
