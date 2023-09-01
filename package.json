@@ -41,7 +41,7 @@
   "dependencies": {
     "aws4": "^1.12.0",
     "lodash": "^4.17.21",
-    "lru-cache": "^10.0.0",
+    "lru-cache": "^10.0.1",
     "rsvp": "^4.8.5",
     "superagent": "^8.0.9"
   }
