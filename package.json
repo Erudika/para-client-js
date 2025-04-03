@@ -43,6 +43,6 @@
     "lodash": "^4.17.21",
     "lru-cache": "^11.0.2",
     "rsvp": "^4.8.5",
-    "superagent": "^10.1.1"
+    "superagent": "^10.2.0"
   }
 }
