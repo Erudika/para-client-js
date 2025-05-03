@@ -1,6 +1,6 @@
 {
   "name": "para-client-js",
-  "version": "1.39.4",
+  "version": "1.39.5",
   "description": "JavaScript Client for Para",
   "homepage": "https://paraio.org",
   "repository": "erudika/para-client-js",
@@ -41,8 +41,8 @@
   "dependencies": {
     "aws4": "^1.13.2",
     "lodash": "^4.17.21",
-    "lru-cache": "^11.0.2",
+    "lru-cache": "^11.1.0",
     "rsvp": "^4.8.5",
-    "superagent": "^10.1.1"
+    "superagent": "^10.2.0"
   }
 }
