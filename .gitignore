@@ -30,3 +30,4 @@ dist
 nbproject
 validation-status.json
 bundle.js
+.env

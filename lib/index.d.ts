@@ -3,356 +3,386 @@
 //export = ParaClient;
 
 declare class ParaClient {
-    constructor(accessKey: any, secretKey: any, options: any);
+  constructor(accessKey: any, secretKey: any, options: any);
 
-    addAppSetting(key: any, value: any, fn: any): any;
+  addAppSetting(key: any, value: any, fn: any): any;
 
-    addValidationConstraint(type: any, field: any, cons: any, fn: any): any;
+  addValidationConstraint(type: any, field: any, cons: any, fn: any): any;
 
-    appSettings(key: any, fn: any): any;
+  appSettings(key: any, fn: any): any;
 
-    approximately(delta: any, fn: any): any;
+  approximately(delta: any, fn: any): any;
 
-    countChildren(obj: any, type2: any, fn: any): any;
+  countChildren(obj: any, type2: any, fn: any): any;
 
-    countLinks(obj: any, type2: any, fn: any): any;
+  countLinks(obj: any, type2: any, fn: any): any;
 
-    create(obj: any, fn: any): any;
+  create(obj: any, fn: any): any;
 
-    createAll(objects: any, fn: any): any;
+  createAll(objects: any, fn: any): any;
 
-    delete(obj: any, fn: any): any;
+  delete(obj: any, fn: any): any;
 
-    deleteAll(keys: any, fn: any): any;
+  deleteAll(keys: any, fn: any): any;
 
-    deleteChildren(obj: any, type2: any, fn: any): any;
+  deleteChildren(obj: any, type2: any, fn: any): any;
 
-    findById(id: any, fn: any): any;
+  findById(id: any, fn: any): any;
 
-    findByIds(ids: any, fn: any): any;
+  findByIds(ids: any, fn: any): any;
 
-    findChildren(obj: any, type2: any, query: any, pager: any, fn: any): any;
+  findChildren(obj: any, type2: any, query: any, pager: any, fn: any): any;
 
-    findLinkedObjects(obj: any, type2: any, field: any, query: any, pager: any, fn: any): any;
+  findLinkedObjects(obj: any, type2: any, field: any, query: any, pager: any, fn: any): any;
 
-    findNearby(type: any, query: any, radius: any, lat: any, lng: any, pager: any, fn: any): any;
+  findNearby(type: any, query: any, radius: any, lat: any, lng: any, pager: any, fn: any): any;
 
-    findNestedQuery(type: any, field: any, query: any, pager: any, fn: any): any;
+  findNestedQuery(type: any, field: any, query: any, pager: any, fn: any): any;
 
-    findPrefix(type: any, field: any, prefix: any, pager: any, fn: any): any;
+  findPrefix(type: any, field: any, prefix: any, pager: any, fn: any): any;
 
-    findQuery(type: any, query: any, pager: any, fn: any): any;
+  findQuery(type: any, query: any, pager: any, fn: any): any;
 
-    findSimilar(type: any, filterKey: any, fields: any, liketext: any, pager: any, fn: any): any;
+  findSimilar(type: any, filterKey: any, fields: any, liketext: any, pager: any, fn: any): any;
 
-    findTagged(type: any, tags: any, pager: any, fn: any): any;
+  findTagged(type: any, tags: any, pager: any, fn: any): any;
 
-    findTags(keyword: any, pager: any, fn: any): any;
+  findTags(keyword: any, pager: any, fn: any): any;
 
-    findTermInList(type: any, field: any, terms: any, pager: any, fn: any): any;
+  findTermInList(type: any, field: any, terms: any, pager: any, fn: any): any;
 
-    findTerms(type: any, terms: any, matchAll: any, pager: any, fn: any): any;
+  findTerms(type: any, terms: any, matchAll: any, pager: any, fn: any): any;
 
-    findWildcard(type: any, field: any, wildcard: any, pager: any, fn: any): any;
+  findWildcard(type: any, field: any, wildcard: any, pager: any, fn: any): any;
 
-    formatDate(format: any, locale: any, fn: any): any;
+  formatDate(format: any, locale: any, fn: any): any;
 
-    getApp(fn: any): any;
+  getApp(fn: any): any;
 
-    getChildren(obj: any, type2: any, field: any, term: any, pager: any, fn: any): any;
+  getChildren(obj: any, type2: any, field: any, term: any, pager: any, fn: any): any;
 
-    getCount(type: any, terms: any, fn: any): any;
+  getCount(type: any, terms: any, fn: any): any;
 
-    getLinkedObjects(obj: any, type2: any, pager: any, fn: any): any;
+  getLinkedObjects(obj: any, type2: any, pager: any, fn: any): any;
 
-    getTimestamp(fn: any): any;
+  getTimestamp(fn: any): any;
 
-    grantResourcePermission(subjectid: any, resourcePath: any, permission: any, allowGuestAccess: any, fn: any): any;
+  grantResourcePermission(
+    subjectid: any,
+    resourcePath: any,
+    permission: any,
+    allowGuestAccess: any,
+    fn: any
+  ): any;
 
-    isAllowedTo(subjectid: any, resourcePath: any, httpMethod: any, fn: any): any;
+  isAllowedTo(subjectid: any, resourcePath: any, httpMethod: any, fn: any): any;
 
-    isLinked(obj: any, type2: any, id2: any, fn: any): any;
+  isLinked(obj: any, type2: any, id2: any, fn: any): any;
 
-    isLinkedToObject(obj: any, toObj: any, fn: any): any;
+  isLinkedToObject(obj: any, toObj: any, fn: any): any;
 
-    link(obj: any, id2: any, fn: any): any;
+  link(obj: any, id2: any, fn: any): any;
 
-    list(type: any, pager: any, fn: any): any;
+  list(type: any, pager: any, fn: any): any;
 
-    markdownToHtml(markdownString: any, fn: any): any;
+  markdownToHtml(markdownString: any, fn: any): any;
 
-    me(accessToken: any, fn: any): any;
+  me(accessToken: any, fn: any): any;
 
-    newId(fn: any): any;
+  newId(fn: any): any;
 
-    newKeys(fn: any): any;
+  newKeys(fn: any): any;
 
-    noSpaces(str: any, replaceWith: any, fn: any): any;
+  noSpaces(str: any, replaceWith: any, fn: any): any;
 
-    read(type: any, id: any, fn: any): any;
+  read(type: any, id: any, fn: any): any;
 
-    readAll(keys: any, fn: any): any;
+  readAll(keys: any, fn: any): any;
 
-    rebuildIndex(destinationIndex: any, fn: any): any;
+  rebuildIndex(destinationIndex: any, fn: any): any;
 
-    refreshToken(fn: any): any;
+  refreshToken(fn: any): any;
 
-    removeAppSetting(key: any, fn: any): any;
+  removeAppSetting(key: any, fn: any): any;
 
-    removeValidationConstraint(type: any, field: any, constraintName: any, fn: any): any;
+  removeValidationConstraint(type: any, field: any, constraintName: any, fn: any): any;
 
-    resourcePermissions(subjectid: any, fn: any): any;
+  resourcePermissions(subjectid: any, fn: any): any;
 
-    revokeAllResourcePermissions(subjectid: any, fn: any): any;
+  revokeAllResourcePermissions(subjectid: any, fn: any): any;
 
-    revokeAllTokens(fn: any): any;
+  revokeAllTokens(fn: any): any;
 
-    revokeResourcePermission(subjectid: any, resourcePath: any, fn: any): any;
+  revokeResourcePermission(subjectid: any, resourcePath: any, fn: any): any;
 
-    setAppSettings(settings: any, fn: any): any;
+  setAppSettings(settings: any, fn: any): any;
 
-    signIn(provider: any, providerToken: any, rememberJWT: any, fn: any): any;
+  signIn(provider: any, providerToken: any, rememberJWT: any, fn: any): any;
 
-    signOut(): void;
+  signOut(): void;
 
-    stripAndTrim(str: any, fn: any): any;
+  stripAndTrim(str: any, fn: any): any;
 
-    types(fn: any): any;
+  types(fn: any): any;
 
-    unlink(obj: any, type2: any, id2: any, fn: any): any;
+  unlink(obj: any, type2: any, id2: any, fn: any): any;
 
-    unlinkAll(obj: any, fn: any): any;
+  unlinkAll(obj: any, fn: any): any;
 
-    update(obj: any, fn: any): any;
+  update(obj: any, fn: any): any;
 
-    updateAll(objects: any, fn: any): any;
+  updateAll(objects: any, fn: any): any;
 
-    validationConstraints(type: any, fn: any): any;
+  validationConstraints(type: any, fn: any): any;
 
-    voteDown(obj: any, voterid: any, fn: any): any;
+  voteDown(obj: any, voterid: any, fn: any): any;
 
-    voteUp(obj: any, voterid: any, fn: any): any;
+  voteUp(obj: any, voterid: any, fn: any): any;
 
-    //static Constraint(constraintName: any, constraintPayload: any): any;
+  //static Constraint(constraintName: any, constraintPayload: any): any;
 
-    //static Pager(page: any, sortby: any, desc: any, limit: any): void;
-
+  //static Pager(page: any, sortby: any, desc: any, limit: any): void;
 }
 
 declare namespace ParaClient {
-    class ParaObject {
-        constructor(id: any, type: any);
+  class ParaObject {
+    constructor(id: any, type: any);
 
-        getAppid(): any;
+    getAppid(): any;
 
-        getCached(): any;
+    getCached(): any;
 
-        getCreatorid(): any;
+    getCreatorid(): any;
 
-        getId(): any;
+    getId(): any;
 
-        getIndexed(): any;
+    getIndexed(): any;
 
-        getName(): any;
+    getName(): any;
 
-        getObjectURI(): any;
+    getObjectURI(): any;
 
-        getParentid(): any;
+    getParentid(): any;
 
-        getStored(): any;
+    getStored(): any;
 
-        getTags(): any;
+    getTags(): any;
 
-        getTimestamp(): any;
+    getTimestamp(): any;
 
-        getType(): any;
+    getType(): any;
 
-        getUpdated(): any;
+    getUpdated(): any;
 
-        getVotes(): any;
+    getVotes(): any;
 
-        setAppid(appid: any): void;
+    setAppid(appid: any): void;
 
-        setCached(isCached: any): void;
+    setCached(isCached: any): void;
 
-        setCreatorid(creatorid: any): void;
+    setCreatorid(creatorid: any): void;
 
-        setFields(map: any): any;
+    setFields(map: any): any;
 
-        setId(id: any): void;
+    setId(id: any): void;
 
-        setIndexed(isIndexed: any): void;
+    setIndexed(isIndexed: any): void;
 
-        setName(name: any): void;
+    setName(name: any): void;
 
-        setParentid(parentid: any): void;
+    setParentid(parentid: any): void;
 
-        setStored(isStored: any): void;
+    setStored(isStored: any): void;
 
-        setTags(tags: any): void;
+    setTags(tags: any): void;
 
-        setTimestamp(timestamp: any): void;
+    setTimestamp(timestamp: any): void;
 
-        setType(type: any): void;
+    setType(type: any): void;
 
-        setUpdated(updated: any): void;
+    setUpdated(updated: any): void;
 
-        setVotes(votes: any): void;
-    }
+    setVotes(votes: any): void;
+  }
 
-    function Constraint(constraintName: any, constraintPayload: any): any;
-    function Pager(page: any, sortby: any, desc: any, limit: any): void;
+  function Constraint(constraintName: any, constraintPayload: any): any;
+  function Pager(page: any, sortby: any, desc: any, limit: any): void;
 
-    namespace Constraint {
-        function digits(i: any, f: any): any;
+  namespace Constraint {
+    function digits(i: any, f: any): any;
 
-        function email(): any;
+    function email(): any;
 
-        function falsy(): any;
+    function falsy(): any;
 
-        function future(): any;
+    function future(): any;
 
-        function max(max: any): any;
+    function max(max: any): any;
 
-        function min(min: any): any;
+    function min(min: any): any;
 
-        function past(): any;
+    function past(): any;
 
-        function pattern(regex: any): any;
+    function pattern(regex: any): any;
 
-        function required(): any;
+    function required(): any;
 
-        function size(min: any, max: any): any;
+    function size(min: any, max: any): any;
 
-        function truthy(): any;
+    function truthy(): any;
 
-        function url(): any;
+    function url(): any;
+  }
 
-    }
+  function addAppSetting(key: any, value: any, fn: any): any;
 
+  function addValidationConstraint(type: any, field: any, cons: any, fn: any): any;
 
-    function addAppSetting(key: any, value: any, fn: any): any;
+  function appSettings(key: any, fn: any): any;
 
-    function addValidationConstraint(type: any, field: any, cons: any, fn: any): any;
+  function approximately(delta: any, fn: any): any;
 
-    function appSettings(key: any, fn: any): any;
+  function countChildren(obj: any, type2: any, fn: any): any;
 
-    function approximately(delta: any, fn: any): any;
+  function countLinks(obj: any, type2: any, fn: any): any;
 
-    function countChildren(obj: any, type2: any, fn: any): any;
+  function create(obj: any, fn: any): any;
 
-    function countLinks(obj: any, type2: any, fn: any): any;
+  function createAll(objects: any, fn: any): any;
 
-    function create(obj: any, fn: any): any;
+  function deleteAll(keys: any, fn: any): any;
 
-    function createAll(objects: any, fn: any): any;
+  function deleteChildren(obj: any, type2: any, fn: any): any;
 
-    function deleteAll(keys: any, fn: any): any;
+  function findById(id: any, fn: any): any;
 
-    function deleteChildren(obj: any, type2: any, fn: any): any;
+  function findByIds(ids: any, fn: any): any;
 
-    function findById(id: any, fn: any): any;
+  function findChildren(obj: any, type2: any, query: any, pager: any, fn: any): any;
 
-    function findByIds(ids: any, fn: any): any;
+  function findLinkedObjects(
+    obj: any,
+    type2: any,
+    field: any,
+    query: any,
+    pager: any,
+    fn: any
+  ): any;
 
-    function findChildren(obj: any, type2: any, query: any, pager: any, fn: any): any;
+  function findNearby(
+    type: any,
+    query: any,
+    radius: any,
+    lat: any,
+    lng: any,
+    pager: any,
+    fn: any
+  ): any;
 
-    function findLinkedObjects(obj: any, type2: any, field: any, query: any, pager: any, fn: any): any;
+  function findNestedQuery(type: any, field: any, query: any, pager: any, fn: any): any;
 
-    function findNearby(type: any, query: any, radius: any, lat: any, lng: any, pager: any, fn: any): any;
+  function findPrefix(type: any, field: any, prefix: any, pager: any, fn: any): any;
 
-    function findNestedQuery(type: any, field: any, query: any, pager: any, fn: any): any;
+  function findQuery(type: any, query: any, pager: any, fn: any): any;
 
-    function findPrefix(type: any, field: any, prefix: any, pager: any, fn: any): any;
+  function findSimilar(
+    type: any,
+    filterKey: any,
+    fields: any,
+    liketext: any,
+    pager: any,
+    fn: any
+  ): any;
 
-    function findQuery(type: any, query: any, pager: any, fn: any): any;
+  function findTagged(type: any, tags: any, pager: any, fn: any): any;
 
-    function findSimilar(type: any, filterKey: any, fields: any, liketext: any, pager: any, fn: any): any;
+  function findTags(keyword: any, pager: any, fn: any): any;
 
-    function findTagged(type: any, tags: any, pager: any, fn: any): any;
+  function findTermInList(type: any, field: any, terms: any, pager: any, fn: any): any;
 
-    function findTags(keyword: any, pager: any, fn: any): any;
+  function findTerms(type: any, terms: any, matchAll: any, pager: any, fn: any): any;
 
-    function findTermInList(type: any, field: any, terms: any, pager: any, fn: any): any;
+  function findWildcard(type: any, field: any, wildcard: any, pager: any, fn: any): any;
 
-    function findTerms(type: any, terms: any, matchAll: any, pager: any, fn: any): any;
+  function formatDate(format: any, locale: any, fn: any): any;
 
-    function findWildcard(type: any, field: any, wildcard: any, pager: any, fn: any): any;
+  function getApp(fn: any): any;
 
-    function formatDate(format: any, locale: any, fn: any): any;
+  function getChildren(obj: any, type2: any, field: any, term: any, pager: any, fn: any): any;
 
-    function getApp(fn: any): any;
+  function getCount(type: any, terms: any, fn: any): any;
 
-    function getChildren(obj: any, type2: any, field: any, term: any, pager: any, fn: any): any;
+  function getLinkedObjects(obj: any, type2: any, pager: any, fn: any): any;
 
-    function getCount(type: any, terms: any, fn: any): any;
+  function getTimestamp(fn: any): any;
 
-    function getLinkedObjects(obj: any, type2: any, pager: any, fn: any): any;
+  function grantResourcePermission(
+    subjectid: any,
+    resourcePath: any,
+    permission: any,
+    allowGuestAccess: any,
+    fn: any
+  ): any;
 
-    function getTimestamp(fn: any): any;
+  function isAllowedTo(subjectid: any, resourcePath: any, httpMethod: any, fn: any): any;
 
-    function grantResourcePermission(subjectid: any, resourcePath: any, permission: any, allowGuestAccess: any, fn: any): any;
+  function isLinked(obj: any, type2: any, id2: any, fn: any): any;
 
-    function isAllowedTo(subjectid: any, resourcePath: any, httpMethod: any, fn: any): any;
+  function isLinkedToObject(obj: any, toObj: any, fn: any): any;
 
-    function isLinked(obj: any, type2: any, id2: any, fn: any): any;
+  function link(obj: any, id2: any, fn: any): any;
 
-    function isLinkedToObject(obj: any, toObj: any, fn: any): any;
+  function list(type: any, pager: any, fn: any): any;
 
-    function link(obj: any, id2: any, fn: any): any;
+  function markdownToHtml(markdownString: any, fn: any): any;
 
-    function list(type: any, pager: any, fn: any): any;
+  function me(accessToken: any, fn: any): any;
 
-    function markdownToHtml(markdownString: any, fn: any): any;
+  function newId(fn: any): any;
 
-    function me(accessToken: any, fn: any): any;
+  function newKeys(fn: any): any;
 
-    function newId(fn: any): any;
+  function noSpaces(str: any, replaceWith: any, fn: any): any;
 
-    function newKeys(fn: any): any;
+  function read(type: any, id: any, fn: any): any;
 
-    function noSpaces(str: any, replaceWith: any, fn: any): any;
+  function readAll(keys: any, fn: any): any;
 
-    function read(type: any, id: any, fn: any): any;
+  function refreshToken(fn: any): any;
 
-    function readAll(keys: any, fn: any): any;
+  function removeAppSetting(key: any, fn: any): any;
 
-    function refreshToken(fn: any): any;
+  function removeValidationConstraint(type: any, field: any, constraintName: any, fn: any): any;
 
-    function removeAppSetting(key: any, fn: any): any;
+  function resourcePermissions(subjectid: any, fn: any): any;
 
-    function removeValidationConstraint(type: any, field: any, constraintName: any, fn: any): any;
+  function revokeAllResourcePermissions(subjectid: any, fn: any): any;
 
-    function resourcePermissions(subjectid: any, fn: any): any;
+  function revokeAllTokens(fn: any): any;
 
-    function revokeAllResourcePermissions(subjectid: any, fn: any): any;
+  function revokeResourcePermission(subjectid: any, resourcePath: any, fn: any): any;
 
-    function revokeAllTokens(fn: any): any;
+  function setAppSettings(settings: any, fn: any): any;
 
-    function revokeResourcePermission(subjectid: any, resourcePath: any, fn: any): any;
+  function signIn(provider: any, providerToken: any, rememberJWT: any, fn: any): any;
 
-    function setAppSettings(settings: any, fn: any): any;
+  function signOut(): void;
 
-    function signIn(provider: any, providerToken: any, rememberJWT: any, fn: any): any;
+  function stripAndTrim(str: any, fn: any): any;
 
-    function signOut(): void;
+  function types(fn: any): any;
 
-    function stripAndTrim(str: any, fn: any): any;
+  function unlink(obj: any, type2: any, id2: any, fn: any): any;
 
-    function types(fn: any): any;
+  function unlinkAll(obj: any, fn: any): any;
 
-    function unlink(obj: any, type2: any, id2: any, fn: any): any;
+  function update(obj: any, fn: any): any;
 
-    function unlinkAll(obj: any, fn: any): any;
+  function updateAll(objects: any, fn: any): any;
 
-    function update(obj: any, fn: any): any;
+  function validationConstraints(type: any, fn: any): any;
 
-    function updateAll(objects: any, fn: any): any;
+  function voteDown(obj: any, voterid: any, fn: any): any;
 
-    function validationConstraints(type: any, fn: any): any;
-
-    function voteDown(obj: any, voterid: any, fn: any): any;
-
-    function voteUp(obj: any, voterid: any, fn: any): any;
-
+  function voteUp(obj: any, voterid: any, fn: any): any;
 }
