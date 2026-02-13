@@ -71,11 +71,20 @@ describeIntegration('ParaClient tests', function () {
     const rootAppName = PARA_ACCESS_KEY.includes(':')
       ? PARA_ACCESS_KEY.split(':')[1]
       : PARA_ACCESS_KEY;
+    console.log('[ParaClient tests] Starting container', {
+      image: PARA_IMAGE,
+      rootAppName
+    });
     paraContainer = await new GenericContainer(PARA_IMAGE)
       .withEnvironment({ para_root_secret_override: PARA_SECRET_KEY })
       .withWaitStrategy(Wait.forLogMessage("Started ParaServer"))
       .withExposedPorts(8080)
       .start();
+    console.log('[ParaClient tests] Container started', {
+      id: paraContainer.getId?.(),
+      host: paraContainer.getHost?.(),
+      port: paraContainer.getMappedPort?.(8080)
+    });
     PARA_BASE_URL = `http://${paraContainer.getHost()}:${paraContainer.getMappedPort(8080)}`;
 
     pc = new ParaClient(PARA_ACCESS_KEY, PARA_SECRET_KEY);
