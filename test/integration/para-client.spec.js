@@ -19,7 +19,7 @@
 
 import lodash from 'lodash';
 import assert, { strictEqual, notEqual } from 'assert';
-import { GenericContainer } from 'testcontainers';
+import { GenericContainer, Wait } from 'testcontainers';
 import ParaClient from '../../lib/index.js';
 import ParaObject from '../../lib/ParaObject.js';
 import Pager from '../../lib/Pager.js';
@@ -73,6 +73,7 @@ describeIntegration('ParaClient tests', function () {
       : PARA_ACCESS_KEY;
     paraContainer = await new GenericContainer(PARA_IMAGE)
       .withEnvironment({ para_root_secret_override: PARA_SECRET_KEY })
+      .withWaitStrategy(Wait.forLogMessage("Started ParaServer"))
       .withExposedPorts(8080)
       .start();
     PARA_BASE_URL = `http://${paraContainer.getHost()}:${paraContainer.getMappedPort(8080)}`;
@@ -209,7 +210,7 @@ describeIntegration('ParaClient tests', function () {
       })
       .then(function (res) {
         pc.read(tr.getType(), tr.getId()).then(
-          function (res) {},
+          function (res) { },
           function (err) {
             done();
           }
@@ -1078,7 +1079,7 @@ describeIntegration('ParaClient tests', function () {
       .then(function (res) {
         return pc.appSettings('prop3');
       })
-      .then(function (res) {})
+      .then(function (res) { })
       .then(function (res) {
         return pc.removeAppSetting('prop1');
       })
