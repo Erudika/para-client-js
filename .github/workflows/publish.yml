@@ -5,7 +5,7 @@ on:
     tags:
       # Matches 0.1.0, 1.2.3, 2.0.0-rc.1, etc.
       # See "TAG CONVENTION" above if you prefer tags with a "v" prefix.
-      - '*.*.*'
+      - 'v*'
 
 jobs:
   publish:
@@ -13,10 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      # Required to mint an OIDC token for npm provenance attestation.
       id-token: write
-      # Scoped down from the default (write) for least-privilege publishing.
-      contents: read
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -30,9 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Build
-        run: npm run build && npm run types
 
       - name: Publish to npm
         # Option A (OIDC): leave NPM_TOKEN unset — npm uses the OIDC exchange instead.
