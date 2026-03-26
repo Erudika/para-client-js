@@ -30,11 +30,7 @@ jobs:
         run: npm ci
 
       - name: Publish to npm
-        # Option A (OIDC): leave NPM_TOKEN unset — npm uses the OIDC exchange instead.
-        # Option B (token): set NPM_TOKEN in repo secrets.
-        run: |
-          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-          npm publish --provenance --access public
+        run:
+          npm run release
         env:
           NPM_CONFIG_PROVENANCE: true
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
