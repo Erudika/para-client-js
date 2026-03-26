@@ -58,6 +58,7 @@
     "lodash": "^4.17.23",
     "mocha": "^12.0.0-beta-3",
     "prettier": "^3.8.1",
+    "release-it": "^19.2.4",
     "testcontainers": "^11.13.0",
     "tsdown": "^0.21.5",
     "typescript": "^6.0.2"
@@ -72,12 +73,19 @@
     "test": "npm run lint && npm run test:unit && npm run test:integration",
     "test:unit": "mocha \"test/unit/**/*.spec.js\"",
     "test:integration": "RUN_PARA_INTEGRATION_TESTS=true mocha --require dotenv/config \"test/integration/**/*.spec.js\"",
-    "prepare": "npm run build && npm run types"
+    "prepare": "npm run build && npm run types",
+    "release": "release-it"
   },
   "license": "Apache-2.0",
   "dependencies": {
     "aws4": "^1.13.2",
     "lru-cache": "^11.2.7",
     "superagent": "^10.3.0"
+  },
+  "release-it": {
+    "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+    "github": {
+      "release": true
+    }
   }
 }
