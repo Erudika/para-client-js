@@ -17,7 +17,7 @@ This is the JavaScript client for Para.
 ### Quick start
 
 ```sh
-$ npm install para-client-js --save
+npm install para-client-js --save
 ```
 
 ## Usage
@@ -45,9 +45,9 @@ For granting resource permissions to your client users go to [console.paraio.org
 
 To use `para-client-js` in the browser run:
 
-```
-$ npm install
-$ npm run build
+```sh
+npm install
+npm run build
 ```
 
 This will generate `dist/browser/para-client-js.global.iife.js` which you can include directly in the browser:
