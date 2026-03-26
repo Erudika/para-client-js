@@ -12,10 +12,6 @@
   "module": "./dist/index.mjs",
   "browser": "./dist/browser/para-client-js.global.iife.js",
   "types": "./dist/types/index.d.ts",
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
-  },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
