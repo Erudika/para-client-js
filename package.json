@@ -1,6 +1,6 @@
 {
   "name": "para-client-js",
-  "version": "1.40.4",
+  "version": "1.40.6",
   "description": "JavaScript Client for Para",
   "homepage": "https://paraio.org",
   "repository": "erudika/para-client-js",
@@ -9,6 +9,9 @@
   "module": "./dist/index.mjs",
   "browser": "./dist/browser/para-client-js.global.iife.js",
   "types": "./dist/types/index.d.ts",
+  "publishConfig": {
+    "provenance": true
+  },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
@@ -47,7 +50,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "dotenv": "^17.3.1",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-prettier": "^5.5.5",
@@ -56,8 +59,8 @@
     "mocha": "^12.0.0-beta-3",
     "prettier": "^3.8.1",
     "testcontainers": "^11.13.0",
-    "tsdown": "^0.21.4",
-    "typescript": "^5.9.3"
+    "tsdown": "^0.21.5",
+    "typescript": "^6.0.2"
   },
   "scripts": {
     "build": "tsdown --clean",
