@@ -5,7 +5,7 @@
   "homepage": "https://paraio.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Erudika/para-client-js.git"
+    "url": "git+https://github.com/Erudika/para-client-js.git"
   },
   "type": "module",
   "main": "./dist/index.cjs",
