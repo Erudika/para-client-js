@@ -49,18 +49,18 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "dotenv": "^17.3.1",
-    "eslint": "^10.1.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-prettier": "^5.5.5",
-    "globals": "^17.4.0",
-    "lodash": "^4.17.23",
+    "globals": "^17.5.0",
+    "lodash": "^4.18.1",
     "mocha": "^12.0.0-beta-3",
-    "prettier": "^3.8.1",
-    "release-it": "^19.2.4",
-    "testcontainers": "^11.13.0",
-    "tsdown": "^0.21.5",
+    "prettier": "^3.8.3",
+    "release-it": "^20.0.0",
+    "testcontainers": "^11.14.0",
+    "tsdown": "^0.21.8",
     "typescript": "^6.0.2"
   },
   "scripts": {
@@ -79,7 +79,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "aws4": "^1.13.2",
-    "lru-cache": "^11.2.7",
+    "lru-cache": "^11.3.5",
     "superagent": "^10.3.0"
   },
   "release-it": {
