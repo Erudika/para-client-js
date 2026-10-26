@@ -49,18 +49,18 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "dotenv": "^17.4.2",
-    "eslint": "^10.10.0",
+    "dotenv": "^18.0.9",
+    "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-n": "^18.3.0",
-    "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.12.0",
+    "eslint-plugin-n": "^18.5.0",
+    "eslint-plugin-prettier": "^5.5.7",
+    "globals": "^17.13.0",
     "lodash": "^4.18.1",
-    "mocha": "^12.0.0",
-    "prettier": "^3.9.6",
-    "release-it": "^21.0.2",
-    "testcontainers": "^12.1.0",
-    "tsdown": "^0.23.0",
+    "mocha": "^12.0.3",
+    "prettier": "^3.9.10",
+    "release-it": "^21.1.1",
+    "testcontainers": "^12.2.1",
+    "tsdown": "^0.23.2",
     "typescript": "^7.0.2"
   },
   "scripts": {
@@ -79,8 +79,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "aws4": "^1.13.2",
-    "lru-cache": "^11.5.2",
-    "superagent": "^10.3.0"
+    "lru-cache": "^11.5.3",
+    "superagent": "^10.4.1"
   },
   "release-it": {
     "$schema": "https://unpkg.com/release-it/schema/release-it.json",
