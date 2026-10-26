@@ -77,7 +77,7 @@ describeIntegration('ParaClient tests', function () {
     });
     paraContainer = await new GenericContainer(PARA_IMAGE)
       .withEnvironment({ para_root_secret_override: PARA_SECRET_KEY })
-      .withWaitStrategy(Wait.forLogMessage("Started ParaServer"))
+      .withWaitStrategy(Wait.forLogMessage('Started ParaServer'))
       .withExposedPorts(8080)
       .start();
     console.log('[ParaClient tests] Container started', {
@@ -219,7 +219,7 @@ describeIntegration('ParaClient tests', function () {
       })
       .then(function (res) {
         pc.read(tr.getType(), tr.getId()).then(
-          function (res) { },
+          function (res) {},
           function (err) {
             done();
           }
@@ -732,7 +732,10 @@ describeIntegration('ParaClient tests', function () {
         return pc.markdownToHtml('# hello **test**');
       })
       .then(function (res) {
-        strictEqual(res, '<h1>hello <strong>test</strong></h1>\n');
+        strictEqual(
+          res,
+          '<h1><a href="#hello-test" id="hello-test">hello <strong>test</strong></a></h1>\n'
+        );
         return pc.approximately(15000);
       })
       .then(function (res) {
@@ -1088,7 +1091,7 @@ describeIntegration('ParaClient tests', function () {
       .then(function (res) {
         return pc.appSettings('prop3');
       })
-      .then(function (res) { })
+      .then(function (res) {})
       .then(function (res) {
         return pc.removeAppSetting('prop1');
       })

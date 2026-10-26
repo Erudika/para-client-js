@@ -12,9 +12,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "types": []
   },
   "include": ["lib/**/*.js"],
-  "exclude": ["test", "dist", "node_modules", "tsup.config.ts"]
+  "exclude": ["test", "dist", "node_modules", "lib/browser.js", "tsdown.config.ts"]
 }

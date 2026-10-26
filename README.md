@@ -59,8 +59,7 @@ This will generate `dist/browser/para-client-js.global.iife.js` which you can in
   </head>
   <body>
     <script>
-      var ParaClient = require('para-client-js');
-      var pc = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
+      var pc = new ParaClient('ACCESS_KEY', '');
     </script>
   </body>
 </html>
@@ -69,12 +68,12 @@ This will generate `dist/browser/para-client-js.global.iife.js` which you can in
 ## Development
 
 - `npm run build` bundles ESM, CommonJS, and browser artifacts into `dist/` using [tsdown](https://tsdown.dev/). Types are emitted via `npm run types`.
-- `npm test` runs ESLint followed by the fast unit tests in `test/unit`.
+- `npm test` runs ESLint, the type tests in `test/types`, and the fast unit tests in `test/unit`.
 - Integration tests live under `test/integration` and require a running Para server. Copy `.env.example` to `.env`, adjust `PARA_*` values, then run `npm run test:integration`.
 
 ## Promises and callbacks
 
-All methods return a promise object and also accept a callback function as last parameter.
+Most methods return a promise object and also accept a callback function as last parameter.
 You can choose to either use callbacks or promises. For example:
 
 ```js
@@ -92,6 +91,83 @@ pc.read('user', '1234').then(
 pc.read('user', '1234', function (user, err) {
   // do something with user object
 });
+```
+
+## TypeScript
+
+Type declarations ship with the package. You do not need to install a separate `@types` package.
+
+The default export and the named export are the same class:
+
+```ts
+import ParaClient from 'para-client-js';
+import { ParaClient as NamedParaClient } from 'para-client-js';
+
+const first: ParaClient = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
+const second: NamedParaClient = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
+```
+
+Most methods return a promise, so the callback is optional. The promise result is typed:
+
+```ts
+import { ParaClient, ParaObject, Pager } from 'para-client-js';
+
+const pc = new ParaClient('ACCESS_KEY', 'SECRET_KEY');
+const pager = new Pager(1, 'name', true, 10);
+
+async function example(): Promise<void> {
+  const created: ParaObject | null = await pc.create(new ParaObject());
+  const user: ParaObject | null = await pc.read('user', '1234');
+  const users: ParaObject[] = await pc.list('user', pager);
+  const count: number = await pc.getCount('user', {});
+  const allowed: boolean = await pc.isAllowedTo('*', 'utils/timestamp', 'GET');
+
+  void [created, user, users, count, allowed];
+}
+```
+
+`ParaObject` and `Pager` constructors accept optional arguments. `Constraint` provides static factory methods:
+
+```ts
+import { ParaObject, Pager, Constraint } from 'para-client-js';
+
+const obj = new ParaObject('1234', 'user');
+const empty = new ParaObject();
+const pager = new Pager();
+const descending: boolean = pager.desc;
+const required: Constraint = Constraint.required();
+```
+
+Set `moduleResolution` to `bundler`, `node16`, or `nodenext`. With `node16` or `nodenext`, set `module` to the same value. TypeScript then reads the `exports` map and the `types` entry. A minimal `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true
+  }
+}
+```
+
+The `exports` map provides an ESM build and a CommonJS build. TypeScript resolves the matching declarations for each mode. Use `import` in ESM code. The default export is the `ParaClient` class. In CommonJS code, `require()` returns the module object, so use the named export:
+
+```js
+const { ParaClient } = require('para-client-js');
+```
+
+In the browser, use a blank secret key and call `signIn()`. AWS Signature Version 4 signing is not available in the browser:
+
+```ts
+import ParaClient from 'para-client-js';
+
+const pc = new ParaClient('ACCESS_KEY', '');
+
+async function signIn(): Promise<void> {
+  const user = await pc.signIn('password', '{email}::{password}', true);
+  void user;
+}
 ```
 
 ## Documentation

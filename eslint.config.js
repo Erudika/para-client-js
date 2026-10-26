@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginN from 'eslint-plugin-n';
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
@@ -20,19 +19,13 @@ export default [
       }
     },
     plugins: {
-      import: eslintPluginImport,
       n: eslintPluginN,
       promise: eslintPluginPromise,
       prettier: eslintPluginPrettier
     },
     rules: {
-      'import/no-unresolved': 'error',
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          devDependencies: ['test/**', '**/*.config.js', '**/*.config.ts']
-        }
-      ],
+      'n/no-missing-import': 'error',
+      'n/no-extraneous-import': 'error',
       'n/no-unsupported-features/node-builtins': 'off',
       'promise/always-return': 'off',
       'prettier/prettier': 'error'
@@ -50,6 +43,15 @@ export default [
       globals: {
         ...globals.mocha
       }
+    },
+    rules: {
+      'n/no-extraneous-import': 'off'
+    }
+  },
+  {
+    files: ['eslint.config.js', '**/*.config.js', '**/*.config.ts'],
+    rules: {
+      'n/no-extraneous-import': 'off'
     }
   }
 ];

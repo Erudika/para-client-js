@@ -14,6 +14,7 @@ const nodeTarget = (() => {
 })();
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const assertShim = path.resolve(dirname, 'shims/assert.js');
+const aws4Shim = path.resolve(dirname, 'shims/aws4.js');
 
 export default defineConfig([
   {
@@ -27,8 +28,9 @@ export default defineConfig([
     sourcemap: true,
     minify: false,
     treeshake: true,
-    skipNodeModulesBundle: true,
-    external: dependencies,
+    deps: {
+      neverBundle: dependencies
+    },
     outputOptions: {
       exports: 'named'
     }
@@ -36,23 +38,26 @@ export default defineConfig([
   {
     name: 'browser-bundle',
     entry: {
-      'para-client-js.global': './lib/index.js'
+      'para-client-js.global': './lib/browser.js'
     },
     format: ['iife'],
     outDir: 'dist/browser',
     target: 'es2019',
+    platform: 'browser',
     clean: false,
     dts: false,
     minify: true,
     sourcemap: true,
     globalName: 'ParaClient',
-    skipNodeModulesBundle: false,
     alias: {
-      assert: assertShim
+      assert: assertShim,
+      aws4: aws4Shim
     },
-    noExternal: dependencies,
+    deps: {
+      alwaysBundle: dependencies
+    },
     outputOptions: {
-      exports: 'named'
+      exports: 'default'
     }
   }
 ]);
