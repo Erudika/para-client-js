@@ -1100,7 +1100,14 @@ describeIntegration('ParaClient tests', function () {
         pc.setAppSettings({}).then(done);
       })
       .catch(function (err) {
-        pc.setAppSettings({}).then(done);
+        pc.setAppSettings({}).then(
+          function () {
+            done(err);
+          },
+          function () {
+            done(err);
+          }
+        );
       });
   });
 
